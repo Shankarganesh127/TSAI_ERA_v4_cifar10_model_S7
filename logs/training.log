@@ -1,155 +1,266 @@
-2025-10-02 22:56:41,482 - INFO - Setting up for model
-2025-10-02 22:56:41,507 - INFO - Model v0 dataloader args: {'batch_size_train': 128, 'batch_size_test': 1000, 'shuffle_train': True, 'shuffle_test': False}
-2025-10-02 22:56:43,644 - INFO - Model v0: OneCycleLR max_lr=0.01 pct_start=0.2 div_factor=10 final_div_factor=100 epochs=15
-2025-10-02 22:56:43,644 - INFO - Dataloader arguments: {'batch_size_train': 128, 'batch_size_test': 1000, 'shuffle_train': True, 'shuffle_test': False}
-2025-10-02 22:56:43,779 - INFO - 
+Enter 1 for params check only, 0 for full training/testing: 0
+2025-10-03 00:10:14,510 - INFO - Setting up for model
+2025-10-03 00:10:14,855 - INFO - Model v0 dataloader args: {'batch_size_train': 32, 'batch_size_test': 1000, 'shuffle_train': True, 'shuffle_test': False, 'num_workers': 2, 'pin_memory': True}
+/usr/local/lib/python3.12/dist-packages/albumentations/core/validation.py:114: UserWarning: ShiftScaleRotate is a special case of Affine transform. Please use Affine transform instead.
+  original_init(self, **validated_kwargs)
+/tmp/ipython-input-2167529188.py:48: UserWarning: Argument(s) 'max_holes, max_height, max_width, min_holes, min_height, min_width, fill_value, mask_fill_value' are not valid for transform CoarseDropout
+  A.CoarseDropout(
+100%|██████████| 170M/170M [01:03<00:00, 2.67MB/s]
+2025-10-03 00:11:22,027 - INFO - Model v0: OneCycleLR max_lr=0.01 pct_start=0.2 div_factor=10 final_div_factor=100 epochs=35
+2025-10-03 00:11:22,028 - INFO - Dataloader arguments: {'batch_size_train': 32, 'batch_size_test': 1000, 'shuffle_train': True, 'shuffle_test': False, 'num_workers': 2, 'pin_memory': True}
+2025-10-03 00:11:23,006 - INFO - 
 ----------------------------------------------------------------
         Layer (type)               Output Shape         Param #
 ================================================================
             Conv2d-1            [-1, 8, 32, 32]             216
        BatchNorm2d-2            [-1, 8, 32, 32]              16
               ReLU-3            [-1, 8, 32, 32]               0
-            Conv2d-4           [-1, 16, 32, 32]           1,152
-       BatchNorm2d-5           [-1, 16, 32, 32]              32
-              ReLU-6           [-1, 16, 32, 32]               0
-            Conv2d-7           [-1, 32, 32, 32]           4,608
-       BatchNorm2d-8           [-1, 32, 32, 32]              64
-              ReLU-9           [-1, 32, 32, 32]               0
-           Conv2d-10           [-1, 32, 32, 32]           9,216
-      BatchNorm2d-11           [-1, 32, 32, 32]              64
-             ReLU-12           [-1, 32, 32, 32]               0
-           Conv2d-13           [-1, 32, 32, 32]           9,216
-      BatchNorm2d-14           [-1, 32, 32, 32]              64
-             ReLU-15           [-1, 32, 32, 32]               0
-           Conv2d-16           [-1, 32, 32, 32]           9,216
-      BatchNorm2d-17           [-1, 32, 32, 32]              64
-             ReLU-18           [-1, 32, 32, 32]               0
-           Conv2d-19           [-1, 32, 16, 16]             288
-      BatchNorm2d-20           [-1, 32, 16, 16]              64
-           Conv2d-21           [-1, 64, 16, 16]           2,048
-      BatchNorm2d-22           [-1, 64, 16, 16]             128
-DepthwiseSeparableConv-23           [-1, 64, 16, 16]               0
-           Conv2d-24           [-1, 64, 16, 16]          36,864
-      BatchNorm2d-25           [-1, 64, 16, 16]             128
-             ReLU-26           [-1, 64, 16, 16]               0
-           Conv2d-27            [-1, 128, 8, 8]          73,728
-      BatchNorm2d-28            [-1, 128, 8, 8]             256
-             ReLU-29            [-1, 128, 8, 8]               0
-AdaptiveAvgPool2d-30            [-1, 128, 1, 1]               0
-          Flatten-31                  [-1, 128]               0
-           Linear-32                   [-1, 10]           1,290
+           Dropout-4            [-1, 8, 32, 32]               0
+            Conv2d-5           [-1, 16, 32, 32]           1,152
+       BatchNorm2d-6           [-1, 16, 32, 32]              32
+              ReLU-7           [-1, 16, 32, 32]               0
+           Dropout-8           [-1, 16, 32, 32]               0
+            Conv2d-9           [-1, 32, 32, 32]           4,608
+      BatchNorm2d-10           [-1, 32, 32, 32]              64
+             ReLU-11           [-1, 32, 32, 32]               0
+          Dropout-12           [-1, 32, 32, 32]               0
+           Conv2d-13           [-1, 32, 30, 30]           9,216
+      BatchNorm2d-14           [-1, 32, 30, 30]              64
+             ReLU-15           [-1, 32, 30, 30]               0
+          Dropout-16           [-1, 32, 30, 30]               0
+           Conv2d-17           [-1, 32, 30, 30]           9,216
+      BatchNorm2d-18           [-1, 32, 30, 30]              64
+             ReLU-19           [-1, 32, 30, 30]               0
+          Dropout-20           [-1, 32, 30, 30]               0
+           Conv2d-21           [-1, 32, 28, 28]           9,216
+      BatchNorm2d-22           [-1, 32, 28, 28]              64
+             ReLU-23           [-1, 32, 28, 28]               0
+          Dropout-24           [-1, 32, 28, 28]               0
+           Conv2d-25           [-1, 32, 14, 14]           9,248
+      BatchNorm2d-26           [-1, 32, 14, 14]              64
+             ReLU-27           [-1, 32, 14, 14]               0
+           Conv2d-28           [-1, 32, 14, 14]             288
+      BatchNorm2d-29           [-1, 32, 14, 14]              64
+           Conv2d-30           [-1, 64, 14, 14]           2,048
+      BatchNorm2d-31           [-1, 64, 14, 14]             128
+DepthwiseSeparableConv-32           [-1, 64, 14, 14]               0
+           Conv2d-33           [-1, 64, 14, 14]          36,864
+      BatchNorm2d-34           [-1, 64, 14, 14]             128
+             ReLU-35           [-1, 64, 14, 14]               0
+          Dropout-36           [-1, 64, 14, 14]               0
+           Conv2d-37          [-1, 128, 14, 14]          73,728
+AdaptiveAvgPool2d-38            [-1, 128, 1, 1]               0
+          Flatten-39                  [-1, 128]               0
+           Linear-40                   [-1, 10]           1,290
 ================================================================
-Total params: 148,722
-Trainable params: 148,722
+Total params: 157,778
+Trainable params: 157,778
 Non-trainable params: 0
 ----------------------------------------------------------------
 Input size (MB): 0.01
-Forward/backward pass size (MB): 4.63
-Params size (MB): 0.57
-Estimated Total Size (MB): 5.21
+Forward/backward pass size (MB): 5.38
+Params size (MB): 0.60
+Estimated Total Size (MB): 5.99
 ----------------------------------------------------------------
-2025-10-02 22:56:43,780 - INFO - --- Model Architecture Checks ---
-2025-10-02 22:56:43,780 - INFO - Total Parameters: 148,722
-2025-10-02 22:56:43,781 - INFO - Trainable Parameters: 148,722
+2025-10-03 00:11:23,006 - INFO - Training model for 35 epochs
+Train Loss=0.0557 Acc=31.64% LR=0.0014: 100%|██████████| 1563/1563 [00:35<00:00, 44.28it/s]
+2025-10-03 00:11:58,307 - INFO - Epoch 01/35: Train set final results: Average loss: 2787.2644, Accuracy: 15822/50000 (31.64%)
+Test Loss=1.5422 Accuracy=40.58%: 100%|██████████| 10/10 [00:01<00:00,  5.60it/s]
+2025-10-03 00:12:00,098 - INFO - Epoch 01/35:Test set final results: Average loss: 1.5422, Accuracy: 4058/10000 (40.58%)
+Train Loss=0.0462 Acc=44.99% LR=0.0027: 100%|██████████| 1563/1563 [00:33<00:00, 46.23it/s]
+2025-10-03 00:12:33,910 - INFO - Epoch 02/35: Train set final results: Average loss: 2311.1262, Accuracy: 22494/50000 (44.99%)
+Test Loss=1.3076 Accuracy=51.86%: 100%|██████████| 10/10 [00:02<00:00,  4.38it/s]
+2025-10-03 00:12:36,200 - INFO - Epoch 02/35:Test set final results: Average loss: 1.3076, Accuracy: 5186/10000 (51.86%)
+Train Loss=0.0401 Acc=53.37% LR=0.0045: 100%|██████████| 1563/1563 [00:35<00:00, 43.45it/s]
+2025-10-03 00:13:12,172 - INFO - Epoch 03/35: Train set final results: Average loss: 2007.0715, Accuracy: 26685/50000 (53.37%)
+Test Loss=1.2655 Accuracy=55.93%: 100%|██████████| 10/10 [00:01<00:00,  5.90it/s]
+2025-10-03 00:13:13,872 - INFO - Epoch 03/35:Test set final results: Average loss: 1.2655, Accuracy: 5593/10000 (55.93%)
+Train Loss=0.0361 Acc=58.73% LR=0.0065: 100%|██████████| 1563/1563 [00:35<00:00, 43.92it/s]
+2025-10-03 00:13:49,462 - INFO - Epoch 04/35: Train set final results: Average loss: 1802.9942, Accuracy: 29366/50000 (58.73%)
+Test Loss=1.1306 Accuracy=59.49%: 100%|██████████| 10/10 [00:01<00:00,  5.87it/s]
+2025-10-03 00:13:51,171 - INFO - Epoch 04/35:Test set final results: Average loss: 1.1306, Accuracy: 5949/10000 (59.49%)
+Train Loss=0.0335 Acc=61.73% LR=0.0083: 100%|██████████| 1563/1563 [00:35<00:00, 43.55it/s]
+2025-10-03 00:14:27,065 - INFO - Epoch 05/35: Train set final results: Average loss: 1672.6435, Accuracy: 30866/50000 (61.73%)
+Test Loss=0.9751 Accuracy=65.50%: 100%|██████████| 10/10 [00:01<00:00,  6.01it/s]
+2025-10-03 00:14:28,734 - INFO - Epoch 05/35:Test set final results: Average loss: 0.9751, Accuracy: 6550/10000 (65.50%)
+Train Loss=0.0311 Acc=64.55% LR=0.0096: 100%|██████████| 1563/1563 [00:34<00:00, 45.38it/s]
+2025-10-03 00:15:03,183 - INFO - Epoch 06/35: Train set final results: Average loss: 1556.5277, Accuracy: 32277/50000 (64.55%)
+Test Loss=0.9245 Accuracy=68.02%: 100%|██████████| 10/10 [00:01<00:00,  5.30it/s]
+2025-10-03 00:15:05,076 - INFO - Epoch 06/35:Test set final results: Average loss: 0.9245, Accuracy: 6802/10000 (68.02%)
+Train Loss=0.0293 Acc=66.83% LR=0.0100: 100%|██████████| 1563/1563 [00:33<00:00, 46.32it/s]
+2025-10-03 00:15:38,828 - INFO - Epoch 07/35: Train set final results: Average loss: 1462.6938, Accuracy: 33415/50000 (66.83%)
+Test Loss=0.7915 Accuracy=72.26%: 100%|██████████| 10/10 [00:01<00:00,  5.80it/s]
+2025-10-03 00:15:40,555 - INFO - Epoch 07/35:Test set final results: Average loss: 0.7915, Accuracy: 7226/10000 (72.26%)
+Train Loss=0.0279 Acc=68.46% LR=0.0100: 100%|██████████| 1563/1563 [00:34<00:00, 45.96it/s]
+2025-10-03 00:16:14,569 - INFO - Epoch 08/35: Train set final results: Average loss: 1395.5646, Accuracy: 34228/50000 (68.46%)
+Test Loss=0.8167 Accuracy=72.37%: 100%|██████████| 10/10 [00:01<00:00,  6.03it/s]
+2025-10-03 00:16:16,232 - INFO - Epoch 08/35:Test set final results: Average loss: 0.8167, Accuracy: 7237/10000 (72.37%)
+Train Loss=0.0267 Acc=69.92% LR=0.0099: 100%|██████████| 1563/1563 [00:36<00:00, 43.06it/s]
+2025-10-03 00:16:52,534 - INFO - Epoch 09/35: Train set final results: Average loss: 1333.5776, Accuracy: 34960/50000 (69.92%)
+Test Loss=0.7551 Accuracy=73.94%: 100%|██████████| 10/10 [00:01<00:00,  6.17it/s]
+2025-10-03 00:16:54,159 - INFO - Epoch 09/35:Test set final results: Average loss: 0.7551, Accuracy: 7394/10000 (73.94%)
+Train Loss=0.0256 Acc=71.42% LR=0.0097: 100%|██████████| 1563/1563 [00:34<00:00, 45.56it/s]
+2025-10-03 00:17:28,465 - INFO - Epoch 10/35: Train set final results: Average loss: 1278.8487, Accuracy: 35709/50000 (71.42%)
+Test Loss=0.7631 Accuracy=73.80%: 100%|██████████| 10/10 [00:01<00:00,  5.94it/s]
+2025-10-03 00:17:30,154 - INFO - Epoch 10/35:Test set final results: Average loss: 0.7631, Accuracy: 7380/10000 (73.80%)
+Train Loss=0.0248 Acc=72.35% LR=0.0095: 100%|██████████| 1563/1563 [00:34<00:00, 45.77it/s]
+2025-10-03 00:18:04,308 - INFO - Epoch 11/35: Train set final results: Average loss: 1242.1008, Accuracy: 36176/50000 (72.35%)
+Test Loss=0.6824 Accuracy=76.31%: 100%|██████████| 10/10 [00:02<00:00,  4.47it/s]
+2025-10-03 00:18:06,548 - INFO - Epoch 11/35:Test set final results: Average loss: 0.6824, Accuracy: 7631/10000 (76.31%)
+Train Loss=0.0241 Acc=73.26% LR=0.0092: 100%|██████████| 1563/1563 [00:36<00:00, 43.20it/s]
+2025-10-03 00:18:42,734 - INFO - Epoch 12/35: Train set final results: Average loss: 1203.3715, Accuracy: 36631/50000 (73.26%)
+Test Loss=0.7016 Accuracy=76.34%: 100%|██████████| 10/10 [00:01<00:00,  6.17it/s]
+2025-10-03 00:18:44,360 - INFO - Epoch 12/35:Test set final results: Average loss: 0.7016, Accuracy: 7634/10000 (76.34%)
+Train Loss=0.0234 Acc=73.90% LR=0.0089: 100%|██████████| 1563/1563 [00:33<00:00, 46.17it/s]
+2025-10-03 00:19:18,217 - INFO - Epoch 13/35: Train set final results: Average loss: 1169.9813, Accuracy: 36949/50000 (73.90%)
+Test Loss=0.6777 Accuracy=77.11%: 100%|██████████| 10/10 [00:01<00:00,  6.25it/s]
+2025-10-03 00:19:19,822 - INFO - Epoch 13/35:Test set final results: Average loss: 0.6777, Accuracy: 7711/10000 (77.11%)
+Train Loss=0.0229 Acc=74.63% LR=0.0085: 100%|██████████| 1563/1563 [00:34<00:00, 45.00it/s]
+2025-10-03 00:19:54,563 - INFO - Epoch 14/35: Train set final results: Average loss: 1143.6724, Accuracy: 37314/50000 (74.63%)
+Test Loss=0.6173 Accuracy=78.40%: 100%|██████████| 10/10 [00:01<00:00,  6.31it/s]
+2025-10-03 00:19:56,152 - INFO - Epoch 14/35:Test set final results: Average loss: 0.6173, Accuracy: 7840/10000 (78.40%)
+Train Loss=0.0222 Acc=75.20% LR=0.0081: 100%|██████████| 1563/1563 [00:32<00:00, 47.41it/s]
+2025-10-03 00:20:29,121 - INFO - Epoch 15/35: Train set final results: Average loss: 1110.8866, Accuracy: 37599/50000 (75.20%)
+Test Loss=0.6319 Accuracy=78.73%: 100%|██████████| 10/10 [00:01<00:00,  5.84it/s]
+2025-10-03 00:20:30,837 - INFO - Epoch 15/35:Test set final results: Average loss: 0.6319, Accuracy: 7873/10000 (78.73%)
+Train Loss=0.0216 Acc=76.12% LR=0.0077: 100%|██████████| 1563/1563 [00:33<00:00, 46.23it/s]
+2025-10-03 00:21:04,653 - INFO - Epoch 16/35: Train set final results: Average loss: 1081.6140, Accuracy: 38059/50000 (76.12%)
+Test Loss=0.5990 Accuracy=79.32%: 100%|██████████| 10/10 [00:01<00:00,  6.25it/s]
+2025-10-03 00:21:06,258 - INFO - Epoch 16/35:Test set final results: Average loss: 0.5990, Accuracy: 7932/10000 (79.32%)
+Train Loss=0.0211 Acc=76.78% LR=0.0072: 100%|██████████| 1563/1563 [00:33<00:00, 46.00it/s]
+2025-10-03 00:21:40,242 - INFO - Epoch 17/35: Train set final results: Average loss: 1053.9131, Accuracy: 38389/50000 (76.78%)
+Test Loss=0.6066 Accuracy=79.64%: 100%|██████████| 10/10 [00:01<00:00,  6.10it/s]
+2025-10-03 00:21:41,886 - INFO - Epoch 17/35:Test set final results: Average loss: 0.6066, Accuracy: 7964/10000 (79.64%)
+Train Loss=0.0208 Acc=77.02% LR=0.0067: 100%|██████████| 1563/1563 [00:33<00:00, 47.35it/s]
+2025-10-03 00:22:14,896 - INFO - Epoch 18/35: Train set final results: Average loss: 1039.9282, Accuracy: 38508/50000 (77.02%)
+Test Loss=0.5793 Accuracy=80.81%: 100%|██████████| 10/10 [00:01<00:00,  6.04it/s]
+2025-10-03 00:22:16,556 - INFO - Epoch 18/35:Test set final results: Average loss: 0.5793, Accuracy: 8081/10000 (80.81%)
+Train Loss=0.0205 Acc=77.00% LR=0.0061: 100%|██████████| 1563/1563 [00:36<00:00, 42.51it/s]
+2025-10-03 00:22:53,332 - INFO - Epoch 19/35: Train set final results: Average loss: 1025.9219, Accuracy: 38501/50000 (77.00%)
+Test Loss=0.5741 Accuracy=80.73%: 100%|██████████| 10/10 [00:01<00:00,  5.92it/s]
+2025-10-03 00:22:55,028 - INFO - Epoch 19/35:Test set final results: Average loss: 0.5741, Accuracy: 8073/10000 (80.73%)
+Train Loss=0.0201 Acc=77.63% LR=0.0056: 100%|██████████| 1563/1563 [00:38<00:00, 40.26it/s]
+2025-10-03 00:23:33,856 - INFO - Epoch 20/35: Train set final results: Average loss: 1004.9551, Accuracy: 38815/50000 (77.63%)
+Test Loss=0.5470 Accuracy=81.40%: 100%|██████████| 10/10 [00:01<00:00,  5.44it/s]
+2025-10-03 00:23:35,701 - INFO - Epoch 20/35:Test set final results: Average loss: 0.5470, Accuracy: 8140/10000 (81.40%)
+Train Loss=0.0196 Acc=78.30% LR=0.0050: 100%|██████████| 1563/1563 [00:37<00:00, 41.57it/s]
+2025-10-03 00:24:13,301 - INFO - Epoch 21/35: Train set final results: Average loss: 978.3846, Accuracy: 39149/50000 (78.30%)
+Test Loss=0.5259 Accuracy=82.09%: 100%|██████████| 10/10 [00:01<00:00,  5.80it/s]
+2025-10-03 00:24:15,029 - INFO - Epoch 21/35:Test set final results: Average loss: 0.5259, Accuracy: 8209/10000 (82.09%)
+Train Loss=0.0192 Acc=78.73% LR=0.0044: 100%|██████████| 1563/1563 [00:36<00:00, 42.51it/s]
+2025-10-03 00:24:51,802 - INFO - Epoch 22/35: Train set final results: Average loss: 962.0642, Accuracy: 39367/50000 (78.73%)
+Test Loss=0.5321 Accuracy=82.21%: 100%|██████████| 10/10 [00:01<00:00,  5.69it/s]
+2025-10-03 00:24:53,565 - INFO - Epoch 22/35:Test set final results: Average loss: 0.5321, Accuracy: 8221/10000 (82.21%)
+Train Loss=0.0189 Acc=79.24% LR=0.0039: 100%|██████████| 1563/1563 [00:37<00:00, 41.23it/s]
+2025-10-03 00:25:31,478 - INFO - Epoch 23/35: Train set final results: Average loss: 947.2682, Accuracy: 39618/50000 (79.24%)
+Test Loss=0.5049 Accuracy=82.99%: 100%|██████████| 10/10 [00:01<00:00,  5.95it/s]
+2025-10-03 00:25:33,164 - INFO - Epoch 23/35:Test set final results: Average loss: 0.5049, Accuracy: 8299/10000 (82.99%)
+Train Loss=0.0186 Acc=79.39% LR=0.0034: 100%|██████████| 1563/1563 [00:36<00:00, 42.98it/s]
+2025-10-03 00:26:09,534 - INFO - Epoch 24/35: Train set final results: Average loss: 928.6708, Accuracy: 39697/50000 (79.39%)
+Test Loss=0.5230 Accuracy=82.51%: 100%|██████████| 10/10 [00:02<00:00,  4.59it/s]
+2025-10-03 00:26:11,718 - INFO - Epoch 24/35:Test set final results: Average loss: 0.5230, Accuracy: 8251/10000 (82.51%)
+Train Loss=0.0180 Acc=80.09% LR=0.0028: 100%|██████████| 1563/1563 [00:36<00:00, 42.81it/s]
+2025-10-03 00:26:48,234 - INFO - Epoch 25/35: Train set final results: Average loss: 901.0948, Accuracy: 40047/50000 (80.09%)
+Test Loss=0.5119 Accuracy=83.04%: 100%|██████████| 10/10 [00:02<00:00,  3.66it/s]
+2025-10-03 00:26:50,972 - INFO - Epoch 25/35:Test set final results: Average loss: 0.5119, Accuracy: 8304/10000 (83.04%)
+Train Loss=0.0177 Acc=80.43% LR=0.0023: 100%|██████████| 1563/1563 [00:35<00:00, 43.73it/s]
+2025-10-03 00:27:26,719 - INFO - Epoch 26/35: Train set final results: Average loss: 885.2760, Accuracy: 40217/50000 (80.43%)
+Test Loss=0.4777 Accuracy=83.79%: 100%|██████████| 10/10 [00:01<00:00,  5.35it/s]
+2025-10-03 00:27:28,591 - INFO - Epoch 26/35:Test set final results: Average loss: 0.4777, Accuracy: 8379/10000 (83.79%)
+Train Loss=0.0174 Acc=80.79% LR=0.0019: 100%|██████████| 1563/1563 [00:36<00:00, 43.20it/s]
+2025-10-03 00:28:04,776 - INFO - Epoch 27/35: Train set final results: Average loss: 870.7485, Accuracy: 40396/50000 (80.79%)
+Test Loss=0.4867 Accuracy=83.60%: 100%|██████████| 10/10 [00:01<00:00,  5.97it/s]
+2025-10-03 00:28:06,458 - INFO - Epoch 27/35:Test set final results: Average loss: 0.4867, Accuracy: 8360/10000 (83.60%)
+Train Loss=0.0171 Acc=81.12% LR=0.0015: 100%|██████████| 1563/1563 [00:38<00:00, 40.71it/s]
+2025-10-03 00:28:44,861 - INFO - Epoch 28/35: Train set final results: Average loss: 856.6689, Accuracy: 40559/50000 (81.12%)
+Test Loss=0.4869 Accuracy=83.29%: 100%|██████████| 10/10 [00:01<00:00,  5.79it/s]
+2025-10-03 00:28:46,595 - INFO - Epoch 28/35:Test set final results: Average loss: 0.4869, Accuracy: 8329/10000 (83.29%)
+Train Loss=0.0166 Acc=81.54% LR=0.0011: 100%|██████████| 1563/1563 [00:37<00:00, 42.08it/s]
+2025-10-03 00:29:23,739 - INFO - Epoch 29/35: Train set final results: Average loss: 830.7871, Accuracy: 40769/50000 (81.54%)
+Test Loss=0.4607 Accuracy=84.62%: 100%|██████████| 10/10 [00:01<00:00,  5.87it/s]
+2025-10-03 00:29:25,448 - INFO - Epoch 29/35:Test set final results: Average loss: 0.4607, Accuracy: 8462/10000 (84.62%)
+Train Loss=0.0164 Acc=81.98% LR=0.0008: 100%|██████████| 1563/1563 [00:36<00:00, 42.33it/s]
+2025-10-03 00:30:02,377 - INFO - Epoch 30/35: Train set final results: Average loss: 818.3666, Accuracy: 40992/50000 (81.98%)
+Test Loss=0.4584 Accuracy=84.85%: 100%|██████████| 10/10 [00:01<00:00,  5.96it/s]
+2025-10-03 00:30:04,059 - INFO - Epoch 30/35:Test set final results: Average loss: 0.4584, Accuracy: 8485/10000 (84.85%)
+Train Loss=0.0161 Acc=82.28% LR=0.0005: 100%|██████████| 1563/1563 [00:34<00:00, 45.20it/s]
+2025-10-03 00:30:38,642 - INFO - Epoch 31/35: Train set final results: Average loss: 805.1573, Accuracy: 41141/50000 (82.28%)
+Test Loss=0.4518 Accuracy=84.85%: 100%|██████████| 10/10 [00:02<00:00,  4.43it/s]
+2025-10-03 00:30:40,906 - INFO - Epoch 31/35:Test set final results: Average loss: 0.4518, Accuracy: 8485/10000 (84.85%)
+Train Loss=0.0159 Acc=82.44% LR=0.0003: 100%|██████████| 1563/1563 [00:33<00:00, 46.19it/s]
+2025-10-03 00:31:14,748 - INFO - Epoch 32/35: Train set final results: Average loss: 792.7924, Accuracy: 41220/50000 (82.44%)
+Test Loss=0.4559 Accuracy=84.86%: 100%|██████████| 10/10 [00:01<00:00,  6.25it/s]
+2025-10-03 00:31:16,354 - INFO - Epoch 32/35:Test set final results: Average loss: 0.4559, Accuracy: 8486/10000 (84.86%)
+Train Loss=0.0156 Acc=82.78% LR=0.0001: 100%|██████████| 1563/1563 [00:36<00:00, 42.79it/s]
+2025-10-03 00:31:52,886 - INFO - Epoch 33/35: Train set final results: Average loss: 780.1840, Accuracy: 41389/50000 (82.78%)
+Test Loss=0.4501 Accuracy=84.89%: 100%|██████████| 10/10 [00:01<00:00,  5.71it/s]
+2025-10-03 00:31:54,644 - INFO - Epoch 33/35:Test set final results: Average loss: 0.4501, Accuracy: 8489/10000 (84.89%)
+Train Loss=0.0154 Acc=83.18% LR=0.0000: 100%|██████████| 1563/1563 [00:35<00:00, 44.11it/s]
+2025-10-03 00:32:30,085 - INFO - Epoch 34/35: Train set final results: Average loss: 768.0875, Accuracy: 41589/50000 (83.18%)
+Test Loss=0.4455 Accuracy=84.90%: 100%|██████████| 10/10 [00:01<00:00,  6.08it/s]
+2025-10-03 00:32:31,736 - INFO - Epoch 34/35:Test set final results: Average loss: 0.4455, Accuracy: 8490/10000 (84.90%)
+Train Loss=0.0153 Acc=83.04% LR=0.0000: 100%|██████████| 1563/1563 [00:35<00:00, 44.54it/s]
+2025-10-03 00:33:06,831 - INFO - Epoch 35/35: Train set final results: Average loss: 766.9637, Accuracy: 41519/50000 (83.04%)
+Test Loss=0.4484 Accuracy=85.09%: 100%|██████████| 10/10 [00:01<00:00,  6.07it/s]2025-10-03 00:33:08,482 - INFO - Epoch 35/35:Test set final results: Average loss: 0.4484, Accuracy: 8509/10000 (85.09%)
+2025-10-03 00:33:08,488 - INFO - 
+2025-10-03 00:33:08,483 - INFO - --- Model Architecture Checks ---
+2025-10-03 00:33:08,483 - INFO - Total Parameters: 157,778
+2025-10-03 00:33:08,483 - INFO - Trainable Parameters: 157,778
 
-2025-10-02 22:56:43,781 - INFO - Layer-wise Parameter Details (in model order):
-2025-10-02 22:56:43,781 - INFO - ----------------------------------------------------------------------------------------------------
-2025-10-02 22:56:43,781 - INFO - 
+2025-10-03 00:33:08,483 - INFO - Layer-wise Parameter Details (in model order):
+2025-10-03 00:33:08,484 - INFO - ----------------------------------------------------------------------------------------------------
+2025-10-03 00:33:08,484 - INFO - 
 Block: c1 (Sequential)
-2025-10-02 22:56:43,781 - INFO -   c1.0 (Conv2d)                                      | Params:    216 | Convolution: 3->8 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,781 - INFO -   c1.1 (BatchNorm2d)                                 | Params:     16 | BatchNorm: 8 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,781 - INFO -   c1.2 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,781 - INFO -   c1.3 (Conv2d)                                      | Params:  1,152 | Convolution: 8->16 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,781 - INFO -   c1.4 (BatchNorm2d)                                 | Params:     32 | BatchNorm: 16 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,781 - INFO -   c1.5 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,781 - INFO -   c1.6 (Conv2d)                                      | Params:  4,608 | Convolution: 16->32 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,781 - INFO -   c1.7 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,781 - INFO -   c1.8 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,781 - INFO - 
+2025-10-03 00:33:08,484 - INFO -   c1.0 (Conv2d)                                      | Params:    216 | Convolution: 3->8 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-03 00:33:08,484 - INFO -   c1.1 (BatchNorm2d)                                 | Params:     16 | BatchNorm: 8 features, eps=1e-05, momentum=0.1
+2025-10-03 00:33:08,484 - INFO -   c1.2 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-03 00:33:08,484 - INFO -   c1.3 (Dropout)                                     | Params:      0 | Dropout: probability 0.05
+2025-10-03 00:33:08,484 - INFO -   c1.4 (Conv2d)                                      | Params:  1,152 | Convolution: 8->16 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-03 00:33:08,485 - INFO -   c1.5 (BatchNorm2d)                                 | Params:     32 | BatchNorm: 16 features, eps=1e-05, momentum=0.1
+2025-10-03 00:33:08,485 - INFO -   c1.6 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-03 00:33:08,485 - INFO -   c1.7 (Dropout)                                     | Params:      0 | Dropout: probability 0.05
+2025-10-03 00:33:08,485 - INFO -   c1.8 (Conv2d)                                      | Params:  4,608 | Convolution: 16->32 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-03 00:33:08,485 - INFO -   c1.9 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-03 00:33:08,485 - INFO -   c1.10 (ReLU)                                       | Params:      0 | Activation: ReLU
+2025-10-03 00:33:08,485 - INFO -   c1.11 (Dropout)                                    | Params:      0 | Dropout: probability 0.05
+2025-10-03 00:33:08,485 - INFO - 
 Block: c2 (Sequential)
-2025-10-02 22:56:43,781 - INFO -   c2.0 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,781 - INFO -   c2.1 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,781 - INFO -   c2.2 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,781 - INFO -   c2.3 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (2, 2), groups 1, bias False
-2025-10-02 22:56:43,782 - INFO -   c2.4 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,782 - INFO -   c2.5 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,782 - INFO -   c2.6 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (4, 4), groups 1, bias False
-2025-10-02 22:56:43,782 - INFO -   c2.7 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,782 - INFO -   c2.8 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,782 - INFO - 
+2025-10-03 00:33:08,486 - INFO -   c2.0 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (0, 0), groups 1, bias False
+2025-10-03 00:33:08,486 - INFO -   c2.1 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-03 00:33:08,486 - INFO -   c2.2 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-03 00:33:08,486 - INFO -   c2.3 (Dropout)                                     | Params:      0 | Dropout: probability 0.05
+2025-10-03 00:33:08,486 - INFO -   c2.4 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (2, 2), groups 1, bias False
+2025-10-03 00:33:08,486 - INFO -   c2.5 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-03 00:33:08,486 - INFO -   c2.6 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-03 00:33:08,486 - INFO -   c2.7 (Dropout)                                     | Params:      0 | Dropout: probability 0.05
+2025-10-03 00:33:08,486 - INFO -   c2.8 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (0, 0), groups 1, bias False
+2025-10-03 00:33:08,486 - INFO -   c2.9 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-03 00:33:08,486 - INFO -   c2.10 (ReLU)                                       | Params:      0 | Activation: ReLU
+2025-10-03 00:33:08,486 - INFO -   c2.11 (Dropout)                                    | Params:      0 | Dropout: probability 0.05
+2025-10-03 00:33:08,486 - INFO - 
 Block: c3 (Sequential)
-2025-10-02 22:56:43,782 - INFO -   c3.0 (DepthwiseSeparableConv)                      | Params:  2,528 | 
-2025-10-02 22:56:43,782 - INFO -   c3.1 (Conv2d)                                      | Params: 36,864 | Convolution: 64->64 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,782 - INFO -   c3.2 (BatchNorm2d)                                 | Params:    128 | BatchNorm: 64 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,782 - INFO -   c3.3 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,782 - INFO - 
+2025-10-03 00:33:08,486 - INFO -   c3.0 (Conv2d)                                      | Params:  9,248 | Convolution: 32->32 channels, kernel (3, 3), stride (2, 2), padding (1, 1), groups 1, bias True
+2025-10-03 00:33:08,487 - INFO -   c3.1 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-03 00:33:08,487 - INFO -   c3.2 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-03 00:33:08,487 - INFO -   c3.3 (DepthwiseSeparableConv)                      | Params:  2,528 | 
+2025-10-03 00:33:08,487 - INFO -   c3.4 (Conv2d)                                      | Params: 36,864 | Convolution: 64->64 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-03 00:33:08,487 - INFO -   c3.5 (BatchNorm2d)                                 | Params:    128 | BatchNorm: 64 features, eps=1e-05, momentum=0.1
+2025-10-03 00:33:08,487 - INFO -   c3.6 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-03 00:33:08,487 - INFO -   c3.7 (Dropout)                                     | Params:      0 | Dropout: probability 0.05
+2025-10-03 00:33:08,487 - INFO - 
 Block: c4 (Sequential)
-2025-10-02 22:56:43,782 - INFO -   c4.0 (Conv2d)                                      | Params: 73,728 | Convolution: 64->128 channels, kernel (3, 3), stride (2, 2), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,782 - INFO -   c4.1 (BatchNorm2d)                                 | Params:    256 | BatchNorm: 128 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,782 - INFO -   c4.2 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,782 - INFO -   c4.3 (AdaptiveAvgPool2d)                           | Params:      0 | AdaptiveAvgPool: output size 1
-2025-10-02 22:56:43,782 - INFO -   c4.4 (Flatten)                                     | Params:      0 | Flatten
-2025-10-02 22:56:43,782 - INFO -   c4.5 (Linear)                                      | Params:  1,290 | Linear: 128->10, bias True
-2025-10-02 22:56:43,782 - INFO - ----------------------------------------------------------------------------------------------------
-2025-10-02 22:56:43,782 - INFO - 
+2025-10-03 00:33:08,487 - INFO -   c4.0 (Conv2d)                                      | Params: 73,728 | Convolution: 64->128 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-03 00:33:08,487 - INFO -   c4.1 (AdaptiveAvgPool2d)                           | Params:      0 | AdaptiveAvgPool: output size 1
+2025-10-03 00:33:08,487 - INFO -   c4.2 (Flatten)                                     | Params:      0 | Flatten
+2025-10-03 00:33:08,487 - INFO -   c4.3 (Linear)                                      | Params:  1,290 | Linear: 128->10, bias True
+2025-10-03 00:33:08,487 - INFO - ----------------------------------------------------------------------------------------------------
+2025-10-03 00:33:08,487 - INFO - 
 Layer Type Summary:
-2025-10-02 22:56:43,783 - INFO - Conv2d               layers used:  10
-2025-10-02 22:56:43,783 - INFO - BatchNorm2d          layers used:  10
-2025-10-02 22:56:43,783 - INFO - ReLU                 layers used:   8
-2025-10-02 22:56:43,783 - INFO - AdaptiveAvgPool2d    layers used:   1
-2025-10-02 22:56:43,783 - INFO - Linear               layers used:   1
-2025-10-02 22:56:43,783 - INFO - Flatten              layers used:   1
-2025-10-02 22:56:43,783 - INFO - ----------------------------------------------------------------------------------------------------
-2025-10-02 22:56:43,783 - INFO - 
-2025-10-02 22:56:43,780 - INFO - --- Model Architecture Checks ---
-2025-10-02 22:56:43,780 - INFO - Total Parameters: 148,722
-2025-10-02 22:56:43,781 - INFO - Trainable Parameters: 148,722
-
-2025-10-02 22:56:43,781 - INFO - Layer-wise Parameter Details (in model order):
-2025-10-02 22:56:43,781 - INFO - ----------------------------------------------------------------------------------------------------
-2025-10-02 22:56:43,781 - INFO - 
-Block: c1 (Sequential)
-2025-10-02 22:56:43,781 - INFO -   c1.0 (Conv2d)                                      | Params:    216 | Convolution: 3->8 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,781 - INFO -   c1.1 (BatchNorm2d)                                 | Params:     16 | BatchNorm: 8 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,781 - INFO -   c1.2 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,781 - INFO -   c1.3 (Conv2d)                                      | Params:  1,152 | Convolution: 8->16 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,781 - INFO -   c1.4 (BatchNorm2d)                                 | Params:     32 | BatchNorm: 16 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,781 - INFO -   c1.5 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,781 - INFO -   c1.6 (Conv2d)                                      | Params:  4,608 | Convolution: 16->32 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,781 - INFO -   c1.7 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,781 - INFO -   c1.8 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,781 - INFO - 
-Block: c2 (Sequential)
-2025-10-02 22:56:43,781 - INFO -   c2.0 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,781 - INFO -   c2.1 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,781 - INFO -   c2.2 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,781 - INFO -   c2.3 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (2, 2), groups 1, bias False
-2025-10-02 22:56:43,782 - INFO -   c2.4 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,782 - INFO -   c2.5 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,782 - INFO -   c2.6 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (4, 4), groups 1, bias False
-2025-10-02 22:56:43,782 - INFO -   c2.7 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,782 - INFO -   c2.8 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,782 - INFO - 
-Block: c3 (Sequential)
-2025-10-02 22:56:43,782 - INFO -   c3.0 (DepthwiseSeparableConv)                      | Params:  2,528 | 
-2025-10-02 22:56:43,782 - INFO -   c3.1 (Conv2d)                                      | Params: 36,864 | Convolution: 64->64 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,782 - INFO -   c3.2 (BatchNorm2d)                                 | Params:    128 | BatchNorm: 64 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,782 - INFO -   c3.3 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,782 - INFO - 
-Block: c4 (Sequential)
-2025-10-02 22:56:43,782 - INFO -   c4.0 (Conv2d)                                      | Params: 73,728 | Convolution: 64->128 channels, kernel (3, 3), stride (2, 2), padding (1, 1), groups 1, bias False
-2025-10-02 22:56:43,782 - INFO -   c4.1 (BatchNorm2d)                                 | Params:    256 | BatchNorm: 128 features, eps=1e-05, momentum=0.1
-2025-10-02 22:56:43,782 - INFO -   c4.2 (ReLU)                                        | Params:      0 | Activation: ReLU
-2025-10-02 22:56:43,782 - INFO -   c4.3 (AdaptiveAvgPool2d)                           | Params:      0 | AdaptiveAvgPool: output size 1
-2025-10-02 22:56:43,782 - INFO -   c4.4 (Flatten)                                     | Params:      0 | Flatten
-2025-10-02 22:56:43,782 - INFO -   c4.5 (Linear)                                      | Params:  1,290 | Linear: 128->10, bias True
-2025-10-02 22:56:43,782 - INFO - ----------------------------------------------------------------------------------------------------
-2025-10-02 22:56:43,782 - INFO - 
-Layer Type Summary:
-2025-10-02 22:56:43,783 - INFO - Conv2d               layers used:  10
-2025-10-02 22:56:43,783 - INFO - BatchNorm2d          layers used:  10
-2025-10-02 22:56:43,783 - INFO - ReLU                 layers used:   8
-2025-10-02 22:56:43,783 - INFO - AdaptiveAvgPool2d    layers used:   1
-2025-10-02 22:56:43,783 - INFO - Linear               layers used:   1
-2025-10-02 22:56:43,783 - INFO - Flatten              layers used:   1
-2025-10-02 22:56:43,783 - INFO - ----------------------------------------------------------------------------------------------------
+2025-10-03 00:33:08,488 - INFO - Conv2d               layers used:  11
+2025-10-03 00:33:08,488 - INFO - BatchNorm2d          layers used:  10
+2025-10-03 00:33:08,488 - INFO - ReLU                 layers used:   8
+2025-10-03 00:33:08,488 - INFO - AdaptiveAvgPool2d    layers used:   1
+2025-10-03 00:33:08,488 - INFO - Dropout              layers used:   7
+2025-10-03 00:33:08,488 - INFO - Linear               layers used:   1
+2025-10-03 00:33:08,488 - INFO - Flatten              layers used:   1
+2025-10-03 00:33:08,488 - INFO - ----------------------------------------------------------------------------------------------------
