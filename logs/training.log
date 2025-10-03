@@ -1,0 +1,155 @@
+2025-10-02 22:56:41,482 - INFO - Setting up for model
+2025-10-02 22:56:41,507 - INFO - Model v0 dataloader args: {'batch_size_train': 128, 'batch_size_test': 1000, 'shuffle_train': True, 'shuffle_test': False}
+2025-10-02 22:56:43,644 - INFO - Model v0: OneCycleLR max_lr=0.01 pct_start=0.2 div_factor=10 final_div_factor=100 epochs=15
+2025-10-02 22:56:43,644 - INFO - Dataloader arguments: {'batch_size_train': 128, 'batch_size_test': 1000, 'shuffle_train': True, 'shuffle_test': False}
+2025-10-02 22:56:43,779 - INFO - 
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1            [-1, 8, 32, 32]             216
+       BatchNorm2d-2            [-1, 8, 32, 32]              16
+              ReLU-3            [-1, 8, 32, 32]               0
+            Conv2d-4           [-1, 16, 32, 32]           1,152
+       BatchNorm2d-5           [-1, 16, 32, 32]              32
+              ReLU-6           [-1, 16, 32, 32]               0
+            Conv2d-7           [-1, 32, 32, 32]           4,608
+       BatchNorm2d-8           [-1, 32, 32, 32]              64
+              ReLU-9           [-1, 32, 32, 32]               0
+           Conv2d-10           [-1, 32, 32, 32]           9,216
+      BatchNorm2d-11           [-1, 32, 32, 32]              64
+             ReLU-12           [-1, 32, 32, 32]               0
+           Conv2d-13           [-1, 32, 32, 32]           9,216
+      BatchNorm2d-14           [-1, 32, 32, 32]              64
+             ReLU-15           [-1, 32, 32, 32]               0
+           Conv2d-16           [-1, 32, 32, 32]           9,216
+      BatchNorm2d-17           [-1, 32, 32, 32]              64
+             ReLU-18           [-1, 32, 32, 32]               0
+           Conv2d-19           [-1, 32, 16, 16]             288
+      BatchNorm2d-20           [-1, 32, 16, 16]              64
+           Conv2d-21           [-1, 64, 16, 16]           2,048
+      BatchNorm2d-22           [-1, 64, 16, 16]             128
+DepthwiseSeparableConv-23           [-1, 64, 16, 16]               0
+           Conv2d-24           [-1, 64, 16, 16]          36,864
+      BatchNorm2d-25           [-1, 64, 16, 16]             128
+             ReLU-26           [-1, 64, 16, 16]               0
+           Conv2d-27            [-1, 128, 8, 8]          73,728
+      BatchNorm2d-28            [-1, 128, 8, 8]             256
+             ReLU-29            [-1, 128, 8, 8]               0
+AdaptiveAvgPool2d-30            [-1, 128, 1, 1]               0
+          Flatten-31                  [-1, 128]               0
+           Linear-32                   [-1, 10]           1,290
+================================================================
+Total params: 148,722
+Trainable params: 148,722
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.01
+Forward/backward pass size (MB): 4.63
+Params size (MB): 0.57
+Estimated Total Size (MB): 5.21
+----------------------------------------------------------------
+2025-10-02 22:56:43,780 - INFO - --- Model Architecture Checks ---
+2025-10-02 22:56:43,780 - INFO - Total Parameters: 148,722
+2025-10-02 22:56:43,781 - INFO - Trainable Parameters: 148,722
+
+2025-10-02 22:56:43,781 - INFO - Layer-wise Parameter Details (in model order):
+2025-10-02 22:56:43,781 - INFO - ----------------------------------------------------------------------------------------------------
+2025-10-02 22:56:43,781 - INFO - 
+Block: c1 (Sequential)
+2025-10-02 22:56:43,781 - INFO -   c1.0 (Conv2d)                                      | Params:    216 | Convolution: 3->8 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,781 - INFO -   c1.1 (BatchNorm2d)                                 | Params:     16 | BatchNorm: 8 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,781 - INFO -   c1.2 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,781 - INFO -   c1.3 (Conv2d)                                      | Params:  1,152 | Convolution: 8->16 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,781 - INFO -   c1.4 (BatchNorm2d)                                 | Params:     32 | BatchNorm: 16 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,781 - INFO -   c1.5 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,781 - INFO -   c1.6 (Conv2d)                                      | Params:  4,608 | Convolution: 16->32 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,781 - INFO -   c1.7 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,781 - INFO -   c1.8 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,781 - INFO - 
+Block: c2 (Sequential)
+2025-10-02 22:56:43,781 - INFO -   c2.0 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,781 - INFO -   c2.1 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,781 - INFO -   c2.2 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,781 - INFO -   c2.3 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (2, 2), groups 1, bias False
+2025-10-02 22:56:43,782 - INFO -   c2.4 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,782 - INFO -   c2.5 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,782 - INFO -   c2.6 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (4, 4), groups 1, bias False
+2025-10-02 22:56:43,782 - INFO -   c2.7 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,782 - INFO -   c2.8 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,782 - INFO - 
+Block: c3 (Sequential)
+2025-10-02 22:56:43,782 - INFO -   c3.0 (DepthwiseSeparableConv)                      | Params:  2,528 | 
+2025-10-02 22:56:43,782 - INFO -   c3.1 (Conv2d)                                      | Params: 36,864 | Convolution: 64->64 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,782 - INFO -   c3.2 (BatchNorm2d)                                 | Params:    128 | BatchNorm: 64 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,782 - INFO -   c3.3 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,782 - INFO - 
+Block: c4 (Sequential)
+2025-10-02 22:56:43,782 - INFO -   c4.0 (Conv2d)                                      | Params: 73,728 | Convolution: 64->128 channels, kernel (3, 3), stride (2, 2), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,782 - INFO -   c4.1 (BatchNorm2d)                                 | Params:    256 | BatchNorm: 128 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,782 - INFO -   c4.2 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,782 - INFO -   c4.3 (AdaptiveAvgPool2d)                           | Params:      0 | AdaptiveAvgPool: output size 1
+2025-10-02 22:56:43,782 - INFO -   c4.4 (Flatten)                                     | Params:      0 | Flatten
+2025-10-02 22:56:43,782 - INFO -   c4.5 (Linear)                                      | Params:  1,290 | Linear: 128->10, bias True
+2025-10-02 22:56:43,782 - INFO - ----------------------------------------------------------------------------------------------------
+2025-10-02 22:56:43,782 - INFO - 
+Layer Type Summary:
+2025-10-02 22:56:43,783 - INFO - Conv2d               layers used:  10
+2025-10-02 22:56:43,783 - INFO - BatchNorm2d          layers used:  10
+2025-10-02 22:56:43,783 - INFO - ReLU                 layers used:   8
+2025-10-02 22:56:43,783 - INFO - AdaptiveAvgPool2d    layers used:   1
+2025-10-02 22:56:43,783 - INFO - Linear               layers used:   1
+2025-10-02 22:56:43,783 - INFO - Flatten              layers used:   1
+2025-10-02 22:56:43,783 - INFO - ----------------------------------------------------------------------------------------------------
+2025-10-02 22:56:43,783 - INFO - 
+2025-10-02 22:56:43,780 - INFO - --- Model Architecture Checks ---
+2025-10-02 22:56:43,780 - INFO - Total Parameters: 148,722
+2025-10-02 22:56:43,781 - INFO - Trainable Parameters: 148,722
+
+2025-10-02 22:56:43,781 - INFO - Layer-wise Parameter Details (in model order):
+2025-10-02 22:56:43,781 - INFO - ----------------------------------------------------------------------------------------------------
+2025-10-02 22:56:43,781 - INFO - 
+Block: c1 (Sequential)
+2025-10-02 22:56:43,781 - INFO -   c1.0 (Conv2d)                                      | Params:    216 | Convolution: 3->8 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,781 - INFO -   c1.1 (BatchNorm2d)                                 | Params:     16 | BatchNorm: 8 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,781 - INFO -   c1.2 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,781 - INFO -   c1.3 (Conv2d)                                      | Params:  1,152 | Convolution: 8->16 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,781 - INFO -   c1.4 (BatchNorm2d)                                 | Params:     32 | BatchNorm: 16 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,781 - INFO -   c1.5 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,781 - INFO -   c1.6 (Conv2d)                                      | Params:  4,608 | Convolution: 16->32 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,781 - INFO -   c1.7 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,781 - INFO -   c1.8 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,781 - INFO - 
+Block: c2 (Sequential)
+2025-10-02 22:56:43,781 - INFO -   c2.0 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,781 - INFO -   c2.1 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,781 - INFO -   c2.2 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,781 - INFO -   c2.3 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (2, 2), groups 1, bias False
+2025-10-02 22:56:43,782 - INFO -   c2.4 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,782 - INFO -   c2.5 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,782 - INFO -   c2.6 (Conv2d)                                      | Params:  9,216 | Convolution: 32->32 channels, kernel (3, 3), stride (1, 1), padding (4, 4), groups 1, bias False
+2025-10-02 22:56:43,782 - INFO -   c2.7 (BatchNorm2d)                                 | Params:     64 | BatchNorm: 32 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,782 - INFO -   c2.8 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,782 - INFO - 
+Block: c3 (Sequential)
+2025-10-02 22:56:43,782 - INFO -   c3.0 (DepthwiseSeparableConv)                      | Params:  2,528 | 
+2025-10-02 22:56:43,782 - INFO -   c3.1 (Conv2d)                                      | Params: 36,864 | Convolution: 64->64 channels, kernel (3, 3), stride (1, 1), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,782 - INFO -   c3.2 (BatchNorm2d)                                 | Params:    128 | BatchNorm: 64 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,782 - INFO -   c3.3 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,782 - INFO - 
+Block: c4 (Sequential)
+2025-10-02 22:56:43,782 - INFO -   c4.0 (Conv2d)                                      | Params: 73,728 | Convolution: 64->128 channels, kernel (3, 3), stride (2, 2), padding (1, 1), groups 1, bias False
+2025-10-02 22:56:43,782 - INFO -   c4.1 (BatchNorm2d)                                 | Params:    256 | BatchNorm: 128 features, eps=1e-05, momentum=0.1
+2025-10-02 22:56:43,782 - INFO -   c4.2 (ReLU)                                        | Params:      0 | Activation: ReLU
+2025-10-02 22:56:43,782 - INFO -   c4.3 (AdaptiveAvgPool2d)                           | Params:      0 | AdaptiveAvgPool: output size 1
+2025-10-02 22:56:43,782 - INFO -   c4.4 (Flatten)                                     | Params:      0 | Flatten
+2025-10-02 22:56:43,782 - INFO -   c4.5 (Linear)                                      | Params:  1,290 | Linear: 128->10, bias True
+2025-10-02 22:56:43,782 - INFO - ----------------------------------------------------------------------------------------------------
+2025-10-02 22:56:43,782 - INFO - 
+Layer Type Summary:
+2025-10-02 22:56:43,783 - INFO - Conv2d               layers used:  10
+2025-10-02 22:56:43,783 - INFO - BatchNorm2d          layers used:  10
+2025-10-02 22:56:43,783 - INFO - ReLU                 layers used:   8
+2025-10-02 22:56:43,783 - INFO - AdaptiveAvgPool2d    layers used:   1
+2025-10-02 22:56:43,783 - INFO - Linear               layers used:   1
+2025-10-02 22:56:43,783 - INFO - Flatten              layers used:   1
+2025-10-02 22:56:43,783 - INFO - ----------------------------------------------------------------------------------------------------
