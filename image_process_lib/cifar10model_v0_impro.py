@@ -6,6 +6,7 @@ import torch.nn.functional as F
 from data_setup import DataSetup
 import logging
 from image_preprocess_pytorch_imp_channel4out import image_processing
+import cifar10model_1710_v2_impro
 
 # ================================
 # cifar10model_v0.py - Model Architecture
@@ -35,13 +36,20 @@ class DepthwiseSeparableConv(nn.Module):
 
 class Net(nn.Module):
     """CIFAR-10 CNN with C1C2C3C4 architecture, Depthwise Sep Conv, Dilated Conv, and GAP."""
-    def __init__(self):
+    def __init__(self, use_4_channels=True, output_channels='rgb+processed'):
         super(Net, self).__init__()
-        self.img_pro = image_processing()
+        self.img_pro = cifar10model_1710_v2_impro.image_processing()
+        self.denoising_method = None
+        self.denoising_params = {}
+        self.use_4_channels = use_4_channels
+        self.output_channels = output_channels
+        
+        # Determine input channels based on configuration
+        input_channels = 4 if use_4_channels else 3
 
         # C1: Initial feature extraction (32x32 -> 32x32)
         self.c1 = nn.Sequential(
-            nn.Conv2d(4, 8, 3, padding=1, bias=False),    # 32x32x8, RF=3
+            nn.Conv2d(input_channels, 8, 3, padding=1, bias=False),    # 32x32x8, RF=3
             nn.BatchNorm2d(8),
             nn.ReLU(),
             nn.Dropout(0.05),
@@ -95,7 +103,41 @@ class Net(nn.Module):
         )
 
     def forward(self, x):
-        x = self.img_pro.extract_image_features(x, kernel=10)  # Preprocess image to single channel
+        # Ensure x is on the correct device
+        device = next(self.parameters()).device
+        x = x.to(device)
+        
+        # Apply flexible image processing based on configuration
+        if self.use_4_channels:
+            # Use 4-channel output (RGB + additional channel)
+            if self.denoising_method:
+                # Use difference channel if denoising is enabled
+                x = self.img_pro.process_image_flexible(
+                    x, 
+                    kernel=1, 
+                    denoise_method=self.denoising_method, 
+                    denoise_params=self.denoising_params,
+                    output_channels='rgb+difference'
+                )
+            else:
+                # Use processed channel if no denoising
+                x = self.img_pro.process_image_flexible(
+                    x, 
+                    kernel=1, 
+                    denoise_method=None, 
+                    denoise_params={},
+                    output_channels='rgb+processed'
+                )
+        else:
+            # Use 3-channel RGB output (with optional denoising)
+            x = self.img_pro.process_image_flexible(
+                x, 
+                kernel=1, 
+                denoise_method=self.denoising_method, 
+                denoise_params=self.denoising_params,
+                output_channels='rgb'
+            )
+        
         x = self.c1(x)
         x = self.c2(x)
         x = self.c3(x)

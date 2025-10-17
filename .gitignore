@@ -8,3 +8,11 @@ wheels/
 
 # Virtual environments
 .venv
+
+demo_main.py
+logs/
+quick_test_main.py
+run_main_demo.py
+test_models.py
+data/
+
